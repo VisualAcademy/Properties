@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using VisualAcademy.Data;
 using VisualAcademy.Models;
 
-namespace VisualAcademy.Pages.Acts.Locations
+namespace VisualAcademy.Pages.Acts.Sublocations
 {
     public class EditModel : PageModel
     {
@@ -22,7 +22,7 @@ namespace VisualAcademy.Pages.Acts.Locations
         }
 
         [BindProperty]
-        public Location Location { get; set; }
+        public Sublocation Sublocation { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,14 +31,14 @@ namespace VisualAcademy.Pages.Acts.Locations
                 return NotFound();
             }
 
-            Location = await _context.Locations
-                .Include(l => l.PropertyRef).FirstOrDefaultAsync(m => m.Id == id);
+            Sublocation = await _context.Sublocations
+                .Include(s => s.LocationRef).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Location == null)
+            if (Sublocation == null)
             {
                 return NotFound();
             }
-           ViewData["PropertyId"] = new SelectList(_context.Properties, "Id", "Id");
+           ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id");
             return Page();
         }
 
@@ -51,7 +51,7 @@ namespace VisualAcademy.Pages.Acts.Locations
                 return Page();
             }
 
-            _context.Attach(Location).State = EntityState.Modified;
+            _context.Attach(Sublocation).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace VisualAcademy.Pages.Acts.Locations
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!LocationExists(Location.Id))
+                if (!SublocationExists(Sublocation.Id))
                 {
                     return NotFound();
                 }
@@ -72,9 +72,9 @@ namespace VisualAcademy.Pages.Acts.Locations
             return RedirectToPage("./Index");
         }
 
-        private bool LocationExists(int id)
+        private bool SublocationExists(int id)
         {
-            return _context.Locations.Any(e => e.Id == id);
+            return _context.Sublocations.Any(e => e.Id == id);
         }
     }
 }

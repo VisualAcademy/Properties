@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using VisualAcademy.Data;
 using VisualAcademy.Models;
 
-namespace VisualAcademy.Pages.Acts.Locations
+namespace VisualAcademy.Pages.Acts.Sublocations
 {
     public class CreateModel : PageModel
     {
@@ -22,12 +22,12 @@ namespace VisualAcademy.Pages.Acts.Locations
 
         public IActionResult OnGet()
         {
-            ViewData["PropertyId"] = new SelectList(_context.Properties, "Id", "Name");
+            ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Name");
             return Page();
         }
 
         [BindProperty]
-        public Location Location { get; set; }
+        public Sublocation Sublocation { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +37,7 @@ namespace VisualAcademy.Pages.Acts.Locations
                 return Page();
             }
 
-            _context.Locations.Add(Location);
+            _context.Sublocations.Add(Sublocation);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

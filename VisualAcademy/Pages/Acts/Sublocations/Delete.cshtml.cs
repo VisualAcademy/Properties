@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using VisualAcademy.Data;
 using VisualAcademy.Models;
 
-namespace VisualAcademy.Pages.Acts.Locations
+namespace VisualAcademy.Pages.Acts.Sublocations
 {
     public class DeleteModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace VisualAcademy.Pages.Acts.Locations
         }
 
         [BindProperty]
-        public Location Location { get; set; }
+        public Sublocation Sublocation { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,10 +30,10 @@ namespace VisualAcademy.Pages.Acts.Locations
                 return NotFound();
             }
 
-            Location = await _context.Locations
-                .Include(l => l.PropertyRef).FirstOrDefaultAsync(m => m.Id == id);
+            Sublocation = await _context.Sublocations
+                .Include(s => s.LocationRef).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Location == null)
+            if (Sublocation == null)
             {
                 return NotFound();
             }
@@ -47,11 +47,11 @@ namespace VisualAcademy.Pages.Acts.Locations
                 return NotFound();
             }
 
-            Location = await _context.Locations.FindAsync(id);
+            Sublocation = await _context.Sublocations.FindAsync(id);
 
-            if (Location != null)
+            if (Sublocation != null)
             {
-                _context.Locations.Remove(Location);
+                _context.Sublocations.Remove(Sublocation);
                 await _context.SaveChangesAsync();
             }
 

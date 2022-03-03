@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using VisualAcademy.Data;
 using VisualAcademy.Models;
 
-namespace VisualAcademy.Pages.Acts.Locations
+namespace VisualAcademy.Pages.Acts.Sublocations
 {
     public class DetailsModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace VisualAcademy.Pages.Acts.Locations
             _context = context;
         }
 
-        public Location Location { get; set; }
+        public Sublocation Sublocation { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,10 +29,10 @@ namespace VisualAcademy.Pages.Acts.Locations
                 return NotFound();
             }
 
-            Location = await _context.Locations
-                .Include(l => l.PropertyRef).FirstOrDefaultAsync(m => m.Id == id);
+            Sublocation = await _context.Sublocations
+                .Include(s => s.LocationRef).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Location == null)
+            if (Sublocation == null)
             {
                 return NotFound();
             }

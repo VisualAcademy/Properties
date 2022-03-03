@@ -41,7 +41,26 @@
                 @Html.DisplayFor(modelItem => item.Property)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item!.PropertyRef!.Name)
+                    @{
+                        var propertyName = "";
+                        if (item.PropertyRef != null)
+                        {
+                            try
+                            {
+
+                                propertyName = item.PropertyRef?.Name ?? "(Unknown)";
+                            }
+                            catch (Exception)
+                            {
+                                propertyName = "(Unknown)";
+                            }
+                        }
+                        else
+                        {
+                            propertyName = "(Unknown)";
+                        }
+                    }
+                    @propertyName
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
