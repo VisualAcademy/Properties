@@ -12,5 +12,6 @@ namespace VisualAcademy.Data
         }
 
         public DbSet<Property> Properties { get; set; } = null!;
+        public DbSet<Location> locations { get; set; } = null!;
     }
 }
