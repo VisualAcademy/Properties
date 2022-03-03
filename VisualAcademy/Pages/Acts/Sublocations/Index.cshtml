@@ -19,13 +19,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Sublocation[0].Active)
             </th>
-            <th>
+@*            <th>
                 @Html.DisplayNameFor(model => model.Sublocation[0].Location)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Sublocation[0].Property)
             </th>
-            <th>
+*@            <th>
                 @Html.DisplayNameFor(model => model.Sublocation[0].LocationRef)
             </th>
             <th></th>
@@ -41,13 +41,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Active)
                 </td>
-                <td>
+@*                <td>
                     @Html.DisplayFor(modelItem => item.Location)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Property)
                 </td>
-                <td>
+*@                <td>
                     @{
                         var locationName = "";
                         if (item.LocationRef != null)

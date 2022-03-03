@@ -23,7 +23,7 @@
                     <input class="form-check-input" asp-for="Sublocation.Active" /> @Html.DisplayNameFor(model => model.Sublocation.Active)
                 </label>
             </div>
-            <div class="form-group">
+@*            <div class="form-group">
                 <label asp-for="Sublocation.Location" class="control-label"></label>
                 <input asp-for="Sublocation.Location" class="form-control" />
                 <span asp-validation-for="Sublocation.Location" class="text-danger"></span>
@@ -33,7 +33,7 @@
                 <input asp-for="Sublocation.Property" class="form-control" />
                 <span asp-validation-for="Sublocation.Property" class="text-danger"></span>
             </div>
-            <div class="form-group">
+*@            <div class="form-group">
                 <label asp-for="Sublocation.LocationId" class="control-label"></label>
                 <select asp-for="Sublocation.LocationId" class ="form-control" asp-items="ViewBag.LocationId"></select>
             </div>

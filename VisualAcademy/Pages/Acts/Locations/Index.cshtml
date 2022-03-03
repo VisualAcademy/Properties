@@ -19,10 +19,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.Location[0].Active)
             </th>
-            <th>
+@*            <th>
                 @Html.DisplayNameFor(model => model.Location[0].Property)
             </th>
-            <th>
+*@            <th>
                 @Html.DisplayNameFor(model => model.Location[0].PropertyRef)
             </th>
             <th></th>
@@ -37,10 +37,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Active)
             </td>
-            <td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.Property)
             </td>
-            <td>
+*@            <td>
                     @{
                         var propertyName = "";
                         if (item.PropertyRef != null)

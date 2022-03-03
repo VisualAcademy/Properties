@@ -12,7 +12,7 @@ namespace VisualAcademy.Models
         [Display(Name = "Location Name")]
         public string Name { get; set; } = "";
 
-        public bool Active { get; set; }
+        public bool Active { get; set; } = false;
 
         public string? Property { get; set; } = "";
 
